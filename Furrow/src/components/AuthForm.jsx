@@ -1,7 +1,10 @@
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import {Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
+import "react-toastify/dist/ReactToastify.css";
+import ("./Form.css")
 
+import { ToastContainer, toast } from "react-toastify";
 const AuthForm = ({ isLogin = false }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,6 +18,14 @@ const AuthForm = ({ isLogin = false }) => {
 
   const handleSubmit = async event => {
     event.preventDefault()
+    if (email.trim() === "") {
+      return toast.error("Email is required");
+    }
+
+    if (password.trim() === "") {
+      return toast.error("Password is required");
+    }
+
     const reqBody = { email, password }
 
     try {
@@ -42,22 +53,53 @@ const AuthForm = ({ isLogin = false }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email
-        <input type='email' required value={email} onChange={handleEmail} />
-      </label>
-      <label>
-        Password
-        <input
-          type='password'
-          required
-          value={password}
-          onChange={event => setPassword(event.target.value)}
-        />
-      </label>
-      <button type='submit'>{isLogin ? 'Login' : 'Signup'}</button>
+    <div className="form-wrapper">
+    <ToastContainer />
+    {isLogin?<h1 className="form-title">Login to your account</h1>:<h1 className="form-title">Create new account</h1>}
+    <form onSubmit={handleSubmit} className="form">
+      <input
+        value={email}
+        onChange={handleEmail}
+        type="email"
+        placeholder="Email"
+      />
+      <input
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        type="password"
+        placeholder="Password"
+      />
+      <button className="form-btn" type="submit">
+      {isLogin ? 'Login' : 'Signup'}
+      </button>
     </form>
+    <div className="form-footer">
+     {isLogin ?  <Link to="/signup" className="forms-link">
+          Signup
+        </Link> : <Link to="/login" className="forms-link">
+          Login
+        </Link> }
+     
+    </div>
+  </div>
+
+
+    // <form onSubmit={handleSubmit}>
+    //   <label>
+    //     Email
+    //     <input type='email' required value={email} onChange={handleEmail} />
+    //   </label>
+    //   <label>
+    //     Password
+    //     <input
+    //       type='password'
+    //       required
+    //       value={password}
+    //       onChange={event => setPassword(event.target.value)}
+    //     />
+    //   </label>
+    //   <button type='submit'>{isLogin ? 'Login' : 'Signup'}</button>
+    // </form>
   )
 }
 
