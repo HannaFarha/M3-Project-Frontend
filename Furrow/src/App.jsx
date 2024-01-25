@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import Navbar from './components/Navbar'
 import SearchPage from './pages/SearchPage'
 import { Route, Routes } from 'react-router-dom'
+import '@mantine/core/styles.css';
 
 
 function App() {

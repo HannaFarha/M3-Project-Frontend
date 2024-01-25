@@ -1,43 +1,31 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { AuthContext } from '../contexts/AuthContext'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
+import { AppShell, Button } from '@mantine/core';
 
 const Navbar = () => {
-const { isAuthenticated, logout } = useContext(AuthContext)
+  const { isAuthenticated, logout } = useContext(AuthContext);
 
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to='/'>Search</Link>
-        </li>
+    <AppShell>
+      <AppShell.Navbar /*</AppShell>className={`${styles.navbar} ${styles.customNavbar}`}*/>
+        <Link to='/' style={{ marginRight: '20px' }}>Search</Link>
+
         {isAuthenticated ? (
           <>
-            <li>
-              <Link to='/collection'>My Collection</Link>
-            </li>
-            <li>
-              <Link to='/profile'>My Profile</Link>
-            </li>
-            <li>
-              <button type='button' onClick={logout}>
-                Logout
-              </button>
-            </li>
+            <Link to='/collection' style={{ marginRight: '20px' }}>My Collection</Link>
+            <Link to='/profile' style={{ marginRight: '20px' }}>My Profile</Link>
+            <Button onClick={logout} variant="light" color="blue">Logout</Button>
           </>
         ) : (
           <>
-            <li>
-              <Link to='/signup'>Signup</Link>
-            </li>
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
+            <Link to='/signup' style={{ marginRight: '20px' }}>Signup</Link>
+            <Link to='/login' style={{ marginRight: '20px' }}>Login</Link>
           </>
         )}
-      </ul>
-    </nav>
-  )
-}
+      </AppShell.Navbar>
+    </AppShell>
+  );
+};
 
-export default Navbar
+export default Navbar;
