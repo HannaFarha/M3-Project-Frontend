@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext()
 
@@ -8,7 +9,7 @@ const AuthContextProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [userId, setUserId] = useState()
-
+  const navigate = useNavigate();
   const saveToken = tokenFromLogin => {
     setToken(tokenFromLogin)
     setIsAuthenticated(true)
@@ -69,6 +70,13 @@ const AuthContextProvider = ({ children }) => {
       setIsLoading(false)
     }
   }, [])
+  
+  useEffect(() => {
+    if (isAuthenticated) {
+        navigate('/');
+     }
+  }, [isAuthenticated, navigate]);
+  
 
   return (
     <AuthContext.Provider
