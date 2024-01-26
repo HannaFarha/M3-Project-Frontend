@@ -15,7 +15,7 @@ function App() {
   return (
     <>
      <Navbar />
-     
+     <SearchPage/>
      <Routes>
         <Route path="/" element={<VinylsPage />} />
         <Route path='/signup' element={<SignUpPage />} />
