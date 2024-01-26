@@ -22,7 +22,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/newvinyl" element={<NewVinyl />} />
         <Route path="/vinyls" element={<VinylsPage />} />
-        <Route path="/vinyls/:vinylId" element={<VinylsDetailsPage />} />
+        <Route path="/vinyls/:vinylsId" element={<VinylsDetailsPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

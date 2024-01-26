@@ -16,8 +16,10 @@ const VinylsDetailsPage = () => {
         if (response.ok) {
           const vinylData = await response.json()
           setVinyl(vinylData)
+          
         } else {
           console.log('Something went wrong')
+          console.log(vinylsId)
         }
       } catch (error) {
         console.log(error)

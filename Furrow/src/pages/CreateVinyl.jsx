@@ -11,6 +11,8 @@ const NewVinyl = () => {
   const [year, setYear] = useState('')
   const [types, setTypes] = useState('')
   const [condition, setCondition] = useState('')
+  const [image, setImage] = useState('');
+
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -61,14 +63,14 @@ const NewVinyl = () => {
           value={year}
           onChange={event => setYear(event.target.value)}
         />
-        <label htmlFor='types'>Types:</label>
+        <label htmlFor='types'>Year:</label>
         <input
           type='text'
           id='types'
           value={types}
           onChange={event => setTypes(event.target.value)}
         />
-        <label htmlFor='condition'>Condition:</label>
+        <label htmlFor='condition'>Year:</label>
         <input
           type='text'
           id='condition'
@@ -76,6 +78,18 @@ const NewVinyl = () => {
           onChange={event => setCondition(event.target.value)}
         />
        
+        
+       <label htmlFor='types'>Types:</label>
+         <MultiSelect
+        value={types}
+      data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
+         />
+        <label htmlFor='condition'>Condition:</label>
+        <Select
+            value={condition}
+
+      data={['Mint', 'VeryGood', 'Fair']}
+       />
       
 
         <button type='submit'>SUBMIT</button>
