@@ -7,12 +7,12 @@ const VinylsDetailsPage = () => {
   const [vinyl, setVinyl] = useState()
   const { fetchWithToken, userId } = useContext(AuthContext)
   const navigate = useNavigate()
-  const id  = useParams();
+  const{ vinylsId } = useParams();
 
   useEffect(() => {
     const fetchVinyl = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls/${id.vinylsId}`)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls/${vinylsId}`)
         if (response.ok) {
           const vinylData = await response.json()
           setVinyl(vinylData)
@@ -29,7 +29,7 @@ const VinylsDetailsPage = () => {
   }, [vinyl])
   const handleDelete = async () => {
     try {
-      const response = await fetchWithToken(`/vinyl/${id.vinylsId}`, 'DELETE')
+      const response = await fetchWithToken(`/vinyl/${vinylsId}`, 'DELETE')
       
       if (response.status === 204) {
         navigate('/')

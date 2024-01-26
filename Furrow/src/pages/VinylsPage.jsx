@@ -9,7 +9,7 @@ function VinylsPage() {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls`)
       if (response.ok) {
         const vinylData = await response.json()
-        console.log(vinylData)
+        
         setVinyls(vinylData)
       }
     } catch (error) {
