@@ -1,11 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import VinylCard from "./VinylCard";
 import { SimpleGrid } from '@mantine/core';
 import { useViewportSize } from "@mantine/hooks";
 
-const SearchResults = ({ vinyls }) => {
+const SearchResults = () => {
   const { width } = useViewportSize();
+
+  // Définition des données fictives directement dans le composant
+  const vinyls = [
+    { id: 1, artist: 'Max', album: 'Album 1', image: 'https://content.discogs.com/media/green-day-saviors-300x300.jpeg', type: ['Techno'] },
+    { id: 2, artist: 'Hanna', album: 'Album 2', image: 'https://content.discogs.com/media/Kid-Cudi-%E2%80%8E%E2%80%93-Insano-300x300.jpeg', type: ['Jazz'] },
+  ];
 
   return (
     <div id="searchResults" className="VinylsListPage">
@@ -14,7 +20,7 @@ const SearchResults = ({ vinyls }) => {
           <Link key={vinyl.id} to={`/vinylDetail/${vinyl.id}`}>
             <VinylCard
               key={vinyl.id}
-              artiste={vinyl.artiste}
+              artist={vinyl.artist}
               album={vinyl.album}
               image={vinyl.image}
               type={vinyl.type}
@@ -26,4 +32,4 @@ const SearchResults = ({ vinyls }) => {
   );
 };
 
-export default SearchResults; 
+export default SearchResults;

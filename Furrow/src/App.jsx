@@ -7,6 +7,8 @@ import SearchPage from './pages/SearchPage'
 import { Route, Routes } from 'react-router-dom'
 import VinylsPage from './pages/VinylsPage';
 import VinylsDetailsPage from './pages/VinylsDetailsPage';
+import '@mantine/core/styles.css';
+
 
 function App() {
 
