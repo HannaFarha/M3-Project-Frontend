@@ -1,9 +1,13 @@
+import SearchResults from "../components/SearchResult";
 
 function SearchPage() {
     return (
-        <div>
-          <h1>Search page</h1>
-        </div>
+        
+      <>
+      <SearchResults/>
+    </>
+
+        
       )
     }
 

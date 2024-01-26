@@ -4,6 +4,7 @@ import { AuthContext } from '../contexts/AuthContext'
 import "react-toastify/dist/ReactToastify.css";
 import ("./Form.css")
 
+
 import { ToastContainer, toast } from "react-toastify";
 const AuthForm = ({ isLogin = false }) => {
   const [email, setEmail] = useState('')
@@ -46,6 +47,7 @@ const AuthForm = ({ isLogin = false }) => {
         const parsed = await response.json()
         console.log(parsed)
         saveToken(parsed.token)
+        navigate('/')
       }
     } catch (error) {
       console.log(error)
@@ -84,22 +86,7 @@ const AuthForm = ({ isLogin = false }) => {
   </div>
 
 
-    // <form onSubmit={handleSubmit}>
-    //   <label>
-    //     Email
-    //     <input type='email' required value={email} onChange={handleEmail} />
-    //   </label>
-    //   <label>
-    //     Password
-    //     <input
-    //       type='password'
-    //       required
-    //       value={password}
-    //       onChange={event => setPassword(event.target.value)}
-    //     />
-    //   </label>
-    //   <button type='submit'>{isLogin ? 'Login' : 'Signup'}</button>
-    // </form>
+    
   )
 }
 

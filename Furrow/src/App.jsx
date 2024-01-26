@@ -5,17 +5,22 @@ import NotFound from "./pages/NotFound";
 import Navbar from './components/Navbar'
 import SearchPage from './pages/SearchPage'
 import { Route, Routes } from 'react-router-dom'
-
+import VinylsPage from './pages/VinylsPage';
+import VinylsDetailsPage from './pages/VinylsDetailsPage';
 
 function App() {
 
   return (
     <>
      <Navbar />
+     
      <Routes>
-        <Route path="/" element={<SearchPage />} />
+        <Route path="/" element={<VinylsPage />} />
         <Route path='/signup' element={<SignUpPage />} />
         <Route path='/login' element={<LoginPage />} />
+
+        <Route path="/vinyls/:vinylsId" element={<VinylsDetailsPage />} />
+
         <Route path="*" element={<NotFound />} />
 
       </Routes>
