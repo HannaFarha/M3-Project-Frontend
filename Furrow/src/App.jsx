@@ -4,27 +4,26 @@ import LoginPage from './pages/LoginPage'
 import NotFound from "./pages/NotFound";
 import Navbar from './components/Navbar'
 import SearchPage from './pages/SearchPage'
-import { Route, Routes } from 'react-router-dom'
+import NewVinyl from './pages/CreateVinyl.jsx';
 import VinylsPage from './pages/VinylsPage';
 import VinylsDetailsPage from './pages/VinylsDetailsPage';
+import {Link, Route, Routes } from 'react-router-dom'
 import '@mantine/core/styles.css';
 
-
 function App() {
-
   return (
     <>
-     <Navbar />
-     <SearchPage/>
-     <Routes>
-        <Route path="/" element={<VinylsPage />} />
-        <Route path='/signup' element={<SignUpPage />} />
-        <Route path='/login' element={<LoginPage />} />
-
+      <Navbar />
+    <VinylsPage /> 
+     
+      <Routes>
+        <Route path="/" element={<SearchPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/vinyls" element={<NewVinyl />} />
+        <Route path="/vinyls" element={<VinylsPage />} />
         <Route path="/vinyls/:vinylsId" element={<VinylsDetailsPage />} />
-
         <Route path="*" element={<NotFound />} />
-
       </Routes>
     </>
   )
