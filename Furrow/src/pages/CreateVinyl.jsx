@@ -9,15 +9,18 @@ const NewVinyl = () => {
   const [artist, setArtist] = useState('')
   const [album, setAlbum] = useState('')
   const [year, setYear] = useState('')
-  const [types, setTypes] = useState('')
-  const [condition, setCondition] = useState('')
-  const [image, setImage] = useState('');
+  const [types, setTypes] = useState([]);
+  const [condition, setCondition] = useState(''); // Modification ici
 
 
   const handleSubmit = async event => {
     event.preventDefault()
-    const vinylToCreate = { artist, album, year, types, condition }
-
+  
+    // Convertir les tableaux en chaînes de caractères
+    const typesString = types.join(', '); // Concaténer les éléments du tableau avec une virgule et un espace
+  
+    const vinylToCreate = { artist, album, year, types: typesString, condition } // Modification ici
+  
     try {
       const response = await fetchWithToken('/vinyls', 'POST', vinylToCreate)
       if (response.status === 201) {
@@ -31,7 +34,6 @@ const NewVinyl = () => {
       console.error(error)
     }
   }
-
   return (
     <>
       <h1>New Vinyl</h1>
@@ -63,35 +65,19 @@ const NewVinyl = () => {
           value={year}
           onChange={event => setYear(event.target.value)}
         />
-        <label htmlFor='types'>Year:</label>
-        <input
-          type='text'
-          id='types'
-          value={types}
-          onChange={event => setTypes(event.target.value)}
-        />
-        <label htmlFor='condition'>Year:</label>
-        <input
-          type='text'
-          id='condition'
-          value={condition}
-          onChange={event => setCondition(event.target.value)}
-        />
-       
         
-       <label htmlFor='types'>Types:</label>
-         <MultiSelect
-        value={types}
-      data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
-         />
-        <label htmlFor='condition'>Condition:</label>
         <Select
-            value={condition}
+          value={types}
+          onChange={(value) => setTypes(value)} // Modification ici
+          data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
+        />
 
-      data={['Mint', 'VeryGood', 'Fair']}
-       />
+        <Select
+          value={condition}
+          onChange={(value) => setCondition(value)} // Modification ici
+          data={['Mint', 'VeryGood', 'Fair']}
+        />
       
-
         <button type='submit'>SUBMIT</button>
       </form>
     </>
