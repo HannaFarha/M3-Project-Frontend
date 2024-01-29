@@ -3,17 +3,32 @@ import { Link } from "react-router-dom";
 import VinylCard from "./VinylCard";
 import { SimpleGrid } from '@mantine/core';
 import { useViewportSize } from "@mantine/hooks";
+import { useState, useEffect } from 'react'
 
 const SearchResults = () => {
   const { width } = useViewportSize();
 
-  // Définition des données fictives directement dans le composant
-  const vinyls = [
-    { id: 1, artist: 'Max', album: 'Album 1', image: 'https://content.discogs.com/media/green-day-saviors-300x300.jpeg', type: ['Techno'] },
-    { id: 2, artist: 'Hanna', album: 'Album 2', image: 'https://content.discogs.com/media/Kid-Cudi-%E2%80%8E%E2%80%93-Insano-300x300.jpeg', type: ['Jazz'] },
-  ];
+  const [vinyls, setVinyls] = useState([])
+
+  const fetchVinyls = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls`)
+      if (response.ok) {
+        const vinylData = await response.json()
+        setVinyls(vinylData)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchVinyls()
+  }, [])
 
   return (
+
+    <div> <h1> Search </h1>
     <div id="searchResults" className="VinylsListPage">
       <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
         {vinyls.map((vinyl) => (
@@ -23,11 +38,12 @@ const SearchResults = () => {
               artist={vinyl.artist}
               album={vinyl.album}
               image={vinyl.image}
-              type={vinyl.type}
+              types={vinyl.types}
             />
           </Link>
         ))}
       </SimpleGrid>
+    </div>
     </div>
   );
 };
