@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-import { MultiSelect, Select } from '@mantine/core';
+import { Select } from '@mantine/core';
 
 const NewVinyl = () => {
   const { fetchWithToken, userId } = useContext(AuthContext)
@@ -16,16 +16,16 @@ const NewVinyl = () => {
   const handleSubmit = async event => {
     event.preventDefault()
   
-//    const typesString = types.join(', ');
+    
   
-    const vinylToCreate = { artist, album, year, types, condition, image } 
+    const vinylToCreate = { artist, album, year, types: types, condition } 
   
     try {
       const response = await fetchWithToken('/vinyls', 'POST', vinylToCreate)
       if (response.status === 201) {
         const vinyl = await response.json()
         console.log(vinyl)
-        navigate(`/vinyl/${vinyl._id}`)
+        navigate(`/vinyls/${vinyl._id}`)
       } else {
         console.log('Something went wrong')
       }
