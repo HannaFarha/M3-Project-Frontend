@@ -15,23 +15,14 @@ function App() {
   return (
     <>
       <Navbar />
-<<<<<<< HEAD
     <VinylsPage /> 
-=======
-     <VinylsPage />
->>>>>>> main
      
       <Routes>
         <Route path="/" element={<SearchPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
-<<<<<<< HEAD
         <Route path="/vinyls" element={<NewVinyl />} />
         <Route path="/vinyls" element={<VinylsPage />} />
-=======
-        <Route path="/newvinyl" element={<NewVinyl />} />
-        {/* <Route path="/vinyls" element={<VinylsPage />} /> */}
->>>>>>> main
         <Route path="/vinyls/:vinylsId" element={<VinylsDetailsPage />} />
         <Route path="/vinyl/:vinylsId" element={<UpdateVinyl />} />
         <Route path="*" element={<NotFound />} />
