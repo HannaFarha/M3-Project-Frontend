@@ -10,16 +10,15 @@ const NewVinyl = () => {
   const [album, setAlbum] = useState('')
   const [year, setYear] = useState('')
   const [types, setTypes] = useState([]);
-  const [condition, setCondition] = useState(''); // Modification ici
+  const [condition, setCondition] = useState('');
 
 
   const handleSubmit = async event => {
     event.preventDefault()
   
-    // Convertir les tableaux en chaînes de caractères
-    const typesString = types.join(', '); // Concaténer les éléments du tableau avec une virgule et un espace
+    const typesString = types.join(', ');
   
-    const vinylToCreate = { artist, album, year, types: typesString, condition } // Modification ici
+    const vinylToCreate = { artist, album, year, types: typesString, condition } 
   
     try {
       const response = await fetchWithToken('/vinyls', 'POST', vinylToCreate)
@@ -65,16 +64,16 @@ const NewVinyl = () => {
           value={year}
           onChange={event => setYear(event.target.value)}
         />
-        
+         <label htmlFor='year'>Types</label>
         <Select
           value={types}
-          onChange={(value) => setTypes(value)} // Modification ici
+          onChange={(value) => setTypes(value)} 
           data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
         />
-
+        <label htmlFor='year'>Condition:</label>
         <Select
           value={condition}
-          onChange={(value) => setCondition(value)} // Modification ici
+          onChange={(value) => setCondition(value)} 
           data={['Mint', 'VeryGood', 'Fair']}
         />
       

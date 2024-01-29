@@ -71,11 +71,11 @@ const AuthContextProvider = ({ children }) => {
     }
   }, [])
   
-  useEffect(() => {
+  /* useEffect(() => {
     if (isAuthenticated) {
         navigate('/');
      }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate]);*/
   
 
   return (
