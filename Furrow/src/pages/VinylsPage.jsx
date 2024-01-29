@@ -1,51 +1,62 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import VinylCard from '../components/VinylCard';
+import { SimpleGrid } from '@mantine/core';
+import { useViewportSize } from '@mantine/hooks';
 
 function VinylsPage() {
-  const [vinyl, setVinyls] = useState([])
-  const [search, setSearch] = useState("");
+  const { width } = useViewportSize();
+  const [vinyls, setVinyls] = useState([]);
+  const [search, setSearch] = useState('');
+
   const fetchVinyls = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls`)
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls`);
       if (response.ok) {
-        const vinylData = await response.json()
-        setVinyls(vinylData)
+        const vinylData = await response.json();
+        setVinyls(vinylData);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchVinyls()
-  }, [])
+    fetchVinyls();
+  }, []);
 
   return (
     <>
-    <div className="authors-search-wrapper">
-    <input
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      type="search"
-      placeholder="Search in Type"
-    />
-  </div>
-    <div>
-      <h1>Vinyls page</h1>
-      <ul>
-        {vinyl.filter(a => a.types.toLowerCase().includes(search)).map(vinyl => (
-          <li key={vinyl._id}>
-            <Link to={`/vinyls/${vinyl._id}`}>
-              {/* <p>{vinyl.artist}</p> */}
-              <p>{vinyl.types}</p>
-              {/* <p>{vinyl.album}</p> */}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="authors-search-wrapper">
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          type="search"
+          placeholder="Search in Type"
+        />
+      </div>
+      <div className="VinylsListPage">
+        <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
+          {vinyls && vinyls.length > 0 ? (
+            vinyls
+              .filter((vinyl) => vinyl.artist.toLowerCase().includes(search.toLowerCase()))
+              .map((vinyl) => (
+                <Link key={vinyl._id} to={`/vinyl/${vinyl._id}`}>
+                  <VinylCard
+                    artist={vinyl.artist}
+                    album={vinyl.album}
+                    image={vinyl.image}
+                    types={vinyl.types}
+                  />
+                </Link>
+              ))
+          ) : (
+            <p>No vinyls found</p>
+          )}
+        </SimpleGrid>
+      </div>
     </>
-  )
+  );
 }
 
-export default VinylsPage
+export default VinylsPage;
