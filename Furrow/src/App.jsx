@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <VinylsPage />
+     
      
       <Routes>
         <Route path="/" element={<SearchPage />} />
