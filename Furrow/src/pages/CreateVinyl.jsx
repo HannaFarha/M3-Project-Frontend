@@ -9,16 +9,16 @@ const NewVinyl = () => {
   const [artist, setArtist] = useState('')
   const [album, setAlbum] = useState('')
   const [year, setYear] = useState('')
-  const [types, setTypes] = useState([]);
+  const [types, setTypes] = useState('');
   const [condition, setCondition] = useState('');
 
 
   const handleSubmit = async event => {
     event.preventDefault()
   
-    const typesString = types.join(', ');
+//    const typesString = types.join(', ');
   
-    const vinylToCreate = { artist, album, year, types: typesString, condition } 
+    const vinylToCreate = { artist, album, year, types, condition } 
   
     try {
       const response = await fetchWithToken('/vinyls', 'POST', vinylToCreate)
@@ -64,13 +64,13 @@ const NewVinyl = () => {
           value={year}
           onChange={event => setYear(event.target.value)}
         />
-         <label htmlFor='year'>Types</label>
-        <Select
-          value={types}
-          onChange={(value) => setTypes(value)} 
-          data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
-        />
-        <label htmlFor='year'>Condition:</label>
+         <label htmlFor='types'>Types</label>
+         <Select
+            value={types}
+            onChange={(value) => setTypes(value)} 
+            data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
+          />
+        <label htmlFor='condition'>Condition:</label>
         <Select
           value={condition}
           onChange={(value) => setCondition(value)} 
