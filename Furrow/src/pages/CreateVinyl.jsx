@@ -16,16 +16,16 @@ const NewVinyl = () => {
   const handleSubmit = async event => {
     event.preventDefault()
   
-    const typesString = types.join(', ');
+    
   
-    const vinylToCreate = { artist, album, year, types: typesString, condition } 
+    const vinylToCreate = { artist, album, year, types: types, condition } 
   
     try {
       const response = await fetchWithToken('/vinyls', 'POST', vinylToCreate)
       if (response.status === 201) {
         const vinyl = await response.json()
         console.log(vinyl)
-        navigate(`/vinyl/${vinyl._id}`)
+        navigate(`/vinyls/${vinyl._id}`)
       } else {
         console.log('Something went wrong')
       }
