@@ -1,4 +1,4 @@
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../components/SearchForm.jsx";
 import SearchResults from "../components/SearchResult";
 
 function SearchPage() {

@@ -15,7 +15,6 @@ function App() {
     <>
       <Navbar />
      <VinylsPage/>
-     
       <Routes>
         <Route path="/" element={<SearchPage />} />
         <Route path="/signup" element={<SignUpPage />} />
