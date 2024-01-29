@@ -13,7 +13,7 @@ const SearchResults = () => {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls`);
       if (response.ok) {
         const vinylData = await response.json();
-        setFilteredVinyls(vinylData); // Utiliser filteredVinyls au lieu de vinyls
+        setFilteredVinyls(vinylData);
       }
     } catch (error) {
       console.log(error);

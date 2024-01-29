@@ -28,7 +28,10 @@ const VinylsDetailsPage = () => {
     
 
     fetchVinyl()
-  }, [vinyl])
+  }, [vinylsId])
+
+
+  
   const handleDelete = async () => {
     try {
       const response = await fetchWithToken(`/vinyl/${vinylsId}`, 'DELETE')
