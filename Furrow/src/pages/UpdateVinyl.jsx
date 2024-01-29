@@ -7,7 +7,7 @@ const UpdateVinyl = () => {
   const [artist, setArtist] = useState('')
   const [album, setAlbum] = useState('')
   const [year, setYear] = useState('')
-  const [types, setTypes] = useState("");
+  const [types, setTypes] = useState('');
   const [condition, setCondition] = useState('');
 
 

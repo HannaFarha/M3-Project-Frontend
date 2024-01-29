@@ -15,14 +15,14 @@ function App() {
   return (
     <>
       <Navbar />
-     <VinylsPage />
+     <VinylsPage /> 
      
       <Routes>
         <Route path="/" element={<SearchPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/newvinyl" element={<NewVinyl />} />
-        {/* <Route path="/vinyls" element={<VinylsPage />} /> */}
+
         <Route path="/vinyls/:vinylsId" element={<VinylsDetailsPage />} />
         <Route path="/vinyl/:vinylsId" element={<UpdateVinyl />} />
         <Route path="*" element={<NotFound />} />

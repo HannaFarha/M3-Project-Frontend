@@ -71,7 +71,7 @@ const AuthContextProvider = ({ children }) => {
     }
   }, [])
   
-  /* useEffect(() => {
+   /*useEffect(() => {
     if (isAuthenticated) {
         navigate('/');
      }
