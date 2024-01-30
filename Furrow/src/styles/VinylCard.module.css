@@ -1,7 +1,7 @@
 @import '../styles/App.css';
 
 .container{
-    background-color:var(--background-light-grey);
+    background-color:var(--main-red);
     margin: 20px;
 }
 .album{
