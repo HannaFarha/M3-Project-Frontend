@@ -1,41 +1,55 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
-import { Select } from '@mantine/core';
+import {  Select } from '@mantine/core';
+const UpdateVinyl = () => {
+    const { fetchWithToken } = useContext(AuthContext)
+    const navigate = useNavigate()
 
-const NewVinyl = () => {
-  const { fetchWithToken, userId } = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { vinylsId } = useParams()
   const [artist, setArtist] = useState('')
   const [album, setAlbum] = useState('')
   const [year, setYear] = useState('')
   const [types, setTypes] = useState('');
   const [condition, setCondition] = useState('');
-  const [image, setImage] = useState('');
+
+  useEffect(() => {
+    const fetchOneVinyl = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls/${vinylsId}`)
+
+        if (response.ok) {
+          const vinylData = await response.json("")
+          setArtist(vinylData.artist)
+          setAlbum(vinylData.album)
+          setYear(vinylData.year)
+          setTypes(vinylData.types)
+          setCondition(vinylData.condition)
+        }
+      } catch (error) {
+        console.log('Something went wrong ', error)
+      }
+    }
+
+    fetchOneVinyl()
+  }, [vinylsId])
 
   const handleSubmit = async event => {
     event.preventDefault()
-  
-    
-  
-    const vinylToCreate = { artist, album, year, types: types, condition } 
-  
+
     try {
-      const response = await fetchWithToken('/vinyls', 'POST', vinylToCreate)
-      if (response.status === 201) {
-        const vinyl = await response.json()
-        console.log(vinyl)
-        navigate(`/vinyls/${vinyl._id}`)
-      } else {
-        console.log('Something went wrong')
+      const response = await fetchWithToken(`/vinyl/${vinylsId}`, 'PUT', { artist, album, year, types, condition })
+      if (response.status === 200) {
+        navigate(`/vinyls/${vinylsId}`)
       }
     } catch (error) {
-      console.error(error)
+      console.log(error)
     }
   }
+
   return (
     <>
-      <h1>New Vinyl</h1>
+      <h1>Update Vinyl </h1>
       <form
         onSubmit={handleSubmit}
         action='submit'
@@ -64,28 +78,18 @@ const NewVinyl = () => {
           value={year}
           onChange={event => setYear(event.target.value)}
         />
-         <label htmlFor='types'>Types</label>
-         <Select
-            value={types}
-            onChange={(value) => setTypes(value)} 
-            data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
-          />
-        <label htmlFor='condition'>Condition:</label>
+         <label htmlFor='year'>Types</label>
+        <Select
+          value={types}
+          onChange={(value) => setTypes(value)} 
+          data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
+        />
+        <label htmlFor='year'>Condition:</label>
         <Select
           value={condition}
           onChange={(value) => setCondition(value)} 
           data={['Mint', 'VeryGood', 'Fair']}
         />
-        <label >
-            <span>Image:</span>
-            <input
-              type="text"
-              value={image}
-              placeholder="Image URL..."
-              onChange={(e) => setImage(e.target.value)}
-            />
-          </label>
-
       
         <button type='submit'>SUBMIT</button>
       </form>
@@ -93,4 +97,4 @@ const NewVinyl = () => {
   )
 }
 
-export default NewVinyl
+export default UpdateVinyl

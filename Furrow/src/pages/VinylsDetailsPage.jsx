@@ -19,7 +19,7 @@ const VinylsDetailsPage = () => {
           
         } else {
           console.log('Something went wrong')
-          console.log(vinylsId)
+          // console.log(vinylsId)
         }
       } catch (error) {
         console.log(error)
@@ -29,9 +29,6 @@ const VinylsDetailsPage = () => {
 
     fetchVinyl()
   }, [vinylsId])
-
-
-  
   const handleDelete = async () => {
     try {
       const response = await fetchWithToken(`/vinyl/${vinylsId}`, 'DELETE')
@@ -57,7 +54,7 @@ const VinylsDetailsPage = () => {
           <button type='button' onClick={handleDelete}>
             Delete
           </button>
-          <Link to={`/vinyl/${vinyl._id}/update`}>Update</Link>
+          <Link to={`/vinyl/${vinyl._id}`}>Update</Link>
         </>
       )}
     </>
