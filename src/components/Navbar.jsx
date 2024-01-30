@@ -27,7 +27,7 @@ const Navbar = () => {
               <Link to='/collection' className={classes.link}>My Collection</Link>
               <Link to='/newVinyl' className={classes.link}>New Vinyl</Link>
               <Link to='/profile' className={classes.link}>My Profile</Link>
-              <Link to='/vinyls' className={classes.link}>Vinyls</Link>
+              <Link to='/' className={classes.link}>Vinyls</Link>
               <Link to="/" className={classes.link}>
                 <Button onClick={logout} variant="filled" color="blue" className={classes.button}>
                   Log Out

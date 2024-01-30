@@ -27,7 +27,7 @@ function VinylsPage() {
   const addToCollection = async (vinylId) => {
     try {
       // Récupérer les détails du vinyle à partir de son ID
-      const vinylResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls/${vinylId}`);
+      const vinylResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyl/${vinylId}`);
       if (!vinylResponse.ok) {
         throw new Error('Failed to fetch vinyl details');
       }
