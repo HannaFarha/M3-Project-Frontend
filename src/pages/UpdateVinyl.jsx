@@ -3,16 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
 import {  Select } from '@mantine/core';
 const UpdateVinyl = () => {
+    const { fetchWithToken } = useContext(AuthContext)
+    const navigate = useNavigate()
+
   const { vinylsId } = useParams()
   const [artist, setArtist] = useState('')
   const [album, setAlbum] = useState('')
   const [year, setYear] = useState('')
-  const [types, setTypes] = useState("");
+  const [types, setTypes] = useState('');
   const [condition, setCondition] = useState('');
-
-
-  const { fetchWithToken } = useContext(AuthContext)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchOneVinyl = async () => {
@@ -20,7 +19,7 @@ const UpdateVinyl = () => {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls/${vinylsId}`)
 
         if (response.ok) {
-          const vinylData = await response.json()
+          const vinylData = await response.json("")
           setArtist(vinylData.artist)
           setAlbum(vinylData.album)
           setYear(vinylData.year)
@@ -94,24 +93,6 @@ const UpdateVinyl = () => {
       
         <button type='submit'>SUBMIT</button>
       </form>
-
-
-
-      {/* <form onSubmit={handleSubmit}>
-        <label>
-          Title:
-          <input value={title} onChange={event => setTitle(event.target.value)} />
-        </label>
-        <label>
-          Author:
-          <input value={author} onChange={event => setAuthor(event.target.value)} />
-        </label>
-        <label>
-          Pages:
-          <input value={pages} type='number' onChange={event => setPages(event.target.value)} />
-        </label>
-        <button type='submit'>Update</button>
-      </form> */}
     </>
   )
 }
