@@ -90,6 +90,15 @@ const UpdateVinyl = () => {
           onChange={(value) => setCondition(value)} 
           data={['Mint', 'VeryGood', 'Fair']}
         />
+         <label >
+            <span>Image:</span>
+            <input
+              type="text"
+              value={image}
+              placeholder="Image URL..."
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </label>
       
         <button type='submit'>SUBMIT</button>
       </form>
