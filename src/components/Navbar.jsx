@@ -17,7 +17,7 @@ const Navbar = () => {
             <Link to='/collection' style={{ marginRight: '20px' }}>My Collection</Link>
             <Link to='/newVinyl' style={{ marginRight: '20px' }}>New Vinyl</Link>
             <Link to='/profile' style={{ marginRight: '20px' }}>My Profile</Link>
-            <Link to='/vinyls' style={{ marginRight: '20px' }}>Vinyls</Link>
+            <Link to='/' style={{ marginRight: '20px' }}>Vinyls</Link>
 
             <Button onClick={logout} variant="light" color="blue">Logout</Button>
           </>
