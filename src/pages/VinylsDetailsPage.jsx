@@ -54,7 +54,7 @@ const VinylsDetailsPage = () => {
           <button type='button' onClick={handleDelete}>
             Delete
           </button>
-          <Link to={`/vinyl/${vinyl._id}`}>Update</Link>
+          <Link to={`/vinyl/${vinyl._id}`}> <button>Update</button></Link>
         </>
       )}
     </>
