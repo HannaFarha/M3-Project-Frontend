@@ -6,18 +6,19 @@ import { AuthContext } from '../contexts/AuthContext';
 
 function CollectionPage() {
   const { width } = useViewportSize();
-  const { fetchWithToken, userId } = useContext(AuthContext);
   const [collections, setCollections] = useState([]);
   const [search, setSearch] = useState('');
 
 
   const fetchCollections = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/coll/collection/`); 
+      const tokenFromLocalStorage= localStorage.getItem("authToken")
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/coll/collections/`, 
+      {headers: { Authorization: `Bearer ${tokenFromLocalStorage}`}}); 
       if (response.ok) {
         const collectionData = await response.json();
         setCollections(collectionData);
-        console.log(collections)
+        console.log("Collections:", collections);
       } else {
         console.error('Failed to fetch collections:', response.status);
       }
@@ -29,6 +30,11 @@ function CollectionPage() {
   useEffect(() => {
     fetchCollections();
   }, []);
+
+  if (collections.length < 1 ) {
+    return  <p> no vinyls to showing</p>
+  }
+  console.log(collections)
 
   return (
     <>
@@ -42,10 +48,8 @@ function CollectionPage() {
       </div>
       <div className="CollectionsListPage">
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
-          {collections && collections.length > 0 ? (
-            collections
-             // .filter((collection) => collection.vinyl.artist.toLowerCase().includes(search.toLowerCase()))
-              .map((collection) => (
+          {collections && (
+            collections.map((collection) => (
                 <Link key={collection._id} to={`/collection/${collection._id}`}>
                   <Card shadow="sm" padding="lg" radius="md" withBorder>
                     <Card.Section>
@@ -61,9 +65,7 @@ function CollectionPage() {
                   </Card>
                 </Link>
               ))
-          ) : (
-            <p>No collections found</p>
-          )}
+          ) }
         </SimpleGrid>
       </div>
     </>
@@ -71,3 +73,4 @@ function CollectionPage() {
 }
 
 export default CollectionPage;
+             // .filter((collection) => collection.vinyl.artist.toLowerCase().includes(search.toLowerCase()))
