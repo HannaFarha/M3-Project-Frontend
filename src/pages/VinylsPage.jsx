@@ -1,7 +1,8 @@
 import React, { useState, useEffect,useContext } from 'react';
-import { SimpleGrid, Button } from '@mantine/core';
+import { SimpleGrid } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import VinylCard from '../components/VinylCard';
+import { Link } from "react-router-dom";
 import { AuthContext } from '../contexts/AuthContext';
 
 
@@ -68,7 +69,7 @@ function VinylsPage() {
             vinyls
               .filter((vinyl) => vinyl.artist.toLowerCase().includes(search.toLowerCase()))
               .map((vinyl) => (
-                <div key={vinyl._id}>
+                <Link key={vinyl._id} to={`/vinyls/${vinyl._id}`}>
                   <VinylCard
                     artist={vinyl.artist}
                     album={vinyl.album}
@@ -76,7 +77,7 @@ function VinylsPage() {
                     types={vinyl.types}
                     onAddToCollection={() => addToCollection(vinyl._id)}
                   />
-                </div>
+                </Link>
               ))
           ) : (
             <p>No vinyls found</p>

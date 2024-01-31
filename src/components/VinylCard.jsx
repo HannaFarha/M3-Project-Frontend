@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import classes from '../styles/VinylCard.module.css';
 

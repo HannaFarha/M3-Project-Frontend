@@ -14,16 +14,16 @@ const Navbar = () => {
   return (
     <nav className={classes.header}>
       <Group justify="space-between" h="100%">
-        {/* Logo avec l'image */}
         <Link to="/">
           <img src={Logo} alt="Logo" style={{ width: '150px', height: 'auto' }} />
         </Link>
 
         <Group h="100%" gap={0} visibleFrom="sm">
-          <Link to='/' className={classes.link}>Search</Link>
 
           {isAuthenticated ? (
             <>
+              
+              <Link to='/' className={classes.link}>Search</Link>
               <Link to='/collection' className={classes.link}>My Collection</Link>
               <Link to='/newVinyl' className={classes.link}>New Vinyl</Link>
               <Link to='/profile' className={classes.link}>My Profile</Link>
@@ -50,11 +50,9 @@ const Navbar = () => {
           )}
         </Group>
 
-        {/* Burger Menu */}
         <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
       </Group>
 
-      {/* Drawer pour les petits écrans */}
       <Drawer
   opened={drawerOpened}
   onClose={closeDrawer}
