@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-
+import "./details.css"
 const VinylsDetailsPage = () => {
  
   const [vinyl, setVinyl] = useState()
@@ -19,7 +19,7 @@ const VinylsDetailsPage = () => {
           
         } else {
           console.log('Something went wrong')
-          // console.log(vinylsId)
+          
         }
       } catch (error) {
         console.log(error)
@@ -41,26 +41,33 @@ const VinylsDetailsPage = () => {
     }
   }
 
-  return vinyl ? (
-    <>
-      <h1>Vinyl Details</h1>
-      <p>{vinyl.artist}</p>
-      <p>{vinyl.album}</p>
-      <p>{vinyl.types}</p>
-      <p>{vinyl.years}</p>
-      <p>{vinyl.condition}</p>
-      {userId === vinyl.createdBy && (
-        <>
-          <button type='button' onClick={handleDelete}>
-            Delete
-          </button>
-          <Link to={`/vinyl/${vinyl._id}`}> <button>Update</button></Link>
-        </>
-      )}
-    </>
-  ) : (
-    <h2>Loading...</h2>
-  )
-}
+  return vinyl ? (<div  className="modal-container">
+  <div  className="modal-content">
+      <i  className ="bi bi-x-circle-fill modal-icon"></i>  
+      <div className="modal-content-img">
+      <img src={vinyl.image}  />
+          </div> 
+          <div className="modal-content-info">
+              <h5 className="modal-content-info-title">Vinyl Details</h5>
+              <div className="modal-content-info-price"><b>{vinyl.artist}</b></div><br/>
+              <div className="modal-content-info-price"><b>{vinyl.album}</b></div>  <br/> 
+              <div className="modal-content-info-price"><b>{vinyl.year}</b>  </div>   <br/> 
+              <div className="modal-content-info-price"><b>{vinyl.types}</b></div>   <br/> 
+              <div className="modal-content-info-price"><b>{vinyl.condition}</b></div>   <br/> 
+              <div className="modal-content-info-price"><b>{vinyl.timestamps}</b></div>   <br/> 
+              
+        <button onClick={handleDelete}  className="modal-add-to-cart-btn">
+          Delete</button><n/>
+          <Link to={`/vinyl/${vinyl._id}`}> <button className="modal-add-to-cart-btn">Update</button></Link>
+          <br/> <br/>
+       <div> <Link to={`/`}> <button className="modal-add-to-cart-btn">go back</button></Link></div>
+      </div>
+      
+              </div> 
+      </div>
 
+  ): (
+    <h2>Loading...</h2>)
+
+}
 export default VinylsDetailsPage

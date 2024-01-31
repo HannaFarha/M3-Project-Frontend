@@ -26,7 +26,7 @@ const Navbar = () => {
               <Link to='/' className={classes.link}>Search</Link>
               <Link to='/collection' className={classes.link}>My Collection</Link>
               <Link to='/newVinyl' className={classes.link}>New Vinyl</Link>
-              <Link to='/profile' className={classes.link}>My Profile</Link>
+            
               <Link to='/' className={classes.link}>Vinyls</Link>
               <Link to="/" className={classes.link}>
                 <Button onClick={logout} variant="filled" color="blue" className={classes.button}>
@@ -63,9 +63,7 @@ const Navbar = () => {
   zIndex={1000000}
 >
   <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
-    {/* Supprimer la référence à linksOpened ici */}
     <Collapse>
-      {/* Vous avez retiré le rendu des liens ici */}
     </Collapse>
     <Group justify="center" grow pb="xl" px="md">
       <Button variant="default">Log in</Button>

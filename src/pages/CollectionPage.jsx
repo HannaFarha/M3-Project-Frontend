@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Text, Badge, Button, Group, SimpleGrid,Input } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
-import { AuthContext } from '../contexts/AuthContext'; 
+
 
 function CollectionPage() {
   const { width } = useViewportSize();
