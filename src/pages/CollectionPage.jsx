@@ -50,7 +50,7 @@ function CollectionPage() {
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
           {collections && collections.map((collection) => (
             collection.vinyl.map((vinylItem) => (
-              <Link key={vinylItem._id} to={`/collection/${collection._id}`}>
+              <Link key={vinylItem._id} to={`/vinyls/${collection._id}`}>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
                   <Card.Section>
                     <img src={vinylItem.image} height={160} alt="Vinyl Cover" />
