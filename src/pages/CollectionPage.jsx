@@ -6,16 +6,18 @@ import { AuthContext } from '../contexts/AuthContext';
 
 function CollectionPage() {
   const { width } = useViewportSize();
-  const { fetchWithToken } = useContext(AuthContext);
+  const { fetchWithToken, userId } = useContext(AuthContext);
   const [collections, setCollections] = useState([]);
   const [search, setSearch] = useState('');
 
+
   const fetchCollections = async () => {
     try {
-      const response = await fetchWithToken('/collection'); 
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/coll/collection/`); 
       if (response.ok) {
         const collectionData = await response.json();
         setCollections(collectionData);
+        console.log(collections)
       } else {
         console.error('Failed to fetch collections:', response.status);
       }
@@ -42,7 +44,7 @@ function CollectionPage() {
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
           {collections && collections.length > 0 ? (
             collections
-              .filter((collection) => collection.vinyl.artist.toLowerCase().includes(search.toLowerCase()))
+             // .filter((collection) => collection.vinyl.artist.toLowerCase().includes(search.toLowerCase()))
               .map((collection) => (
                 <Link key={collection._id} to={`/collection/${collection._id}`}>
                   <Card shadow="sm" padding="lg" radius="md" withBorder>

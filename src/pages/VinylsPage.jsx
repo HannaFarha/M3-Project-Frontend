@@ -9,8 +9,7 @@ function VinylsPage() {
   const { width } = useViewportSize();
   const [vinyls, setVinyls] = useState([]);
   const [search, setSearch] = useState('');
-  const { isAuthenticated, fetchWithToken } = useContext(AuthContext);
- 
+  const { isAuthenticated, fetchWithToken, userId } = useContext(AuthContext);
   
   const fetchVinyls = async () => {
     try {
@@ -18,6 +17,7 @@ function VinylsPage() {
       if (response.ok) {
         const vinylData = await response.json();
         setVinyls(vinylData);
+        console.log(vinylData)
       }
     } catch (error) {
       console.log(error);
@@ -25,16 +25,19 @@ function VinylsPage() {
   };
 
   const addToCollection = async (vinylId) => {
+
     try {
-      const vinylResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyl/${vinylId}`);
+     /* const vinylResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyl/${vinylId}`);
       if (!vinylResponse.ok) {
         throw new Error('Failed to fetch vinyl details');
       }
       const vinylData = await vinylResponse.json();
-
-      const response = await fetchWithToken(`/collection/${vinylId}`, 'POST', {
-        artist: vinylData.artist,
-        album: vinylData.album,
+      */
+      const authToken = localStorage.getItem("authToken")
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/coll/collection/${vinylId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', authorization :`Bearer ${authToken} ` },
+        body: JSON.stringify({ userId })
       });
   
       if (response.ok) {
@@ -48,6 +51,7 @@ function VinylsPage() {
   useEffect(() => {
     fetchVinyls();
   }, []);
+  
 
   return (
     <>
@@ -63,7 +67,7 @@ function VinylsPage() {
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
         {vinyls && vinyls.length > 0 ? (
   vinyls
-    .filter((vinyl) => vinyl.artist.toLowerCase().includes(search.toLowerCase()))
+    .filter((vinyl) => vinyl.album.toLowerCase().includes(search.toLowerCase()))
     .map((vinyl) => (
       <VinylCard
         key={vinyl._id} 
