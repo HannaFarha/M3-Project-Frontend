@@ -1,8 +1,9 @@
 import React, { useState, useEffect,useContext } from 'react';
-import { SimpleGrid } from '@mantine/core';
+import { SimpleGrid, Input } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import VinylCard from '../components/VinylCard';
 import { AuthContext } from '../contexts/AuthContext';
+import classes from '../styles/VinylPage.module.css';
 
 
 function VinylsPage() {
@@ -55,13 +56,15 @@ function VinylsPage() {
 
   return (
     <>
-      <div className="authors-search-wrapper">
-        <input
+        <div className={classes.container}>
+        <Input size="md" radius="xl" 
+          className={classes.Search}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="search"
-          placeholder="Search in Type"
+          placeholder="Search in Vinyls"
         />
+
       </div>
       <div className="VinylsListPage">
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>

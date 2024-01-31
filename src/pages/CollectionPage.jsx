@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Text, Badge, Button, Group, SimpleGrid } from '@mantine/core';
+import { Card, Text, Badge, Button, Group, SimpleGrid,Input } from '@mantine/core';
 import { useViewportSize } from '@mantine/hooks';
 import { AuthContext } from '../contexts/AuthContext'; 
 
@@ -39,7 +39,7 @@ function CollectionPage() {
   return (
     <>
       <div className="authors-search-wrapper">
-        <input
+      <Input size="md" radius="xl" 
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="search"
@@ -50,16 +50,16 @@ function CollectionPage() {
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
           {collections && collections.map((collection) => (
             collection.vinyl.map((vinylItem) => (
-              <Link key={vinylItem._id} to={`/vinyls/${collection._id}`}>
+              <Link key={vinylItem._id} to={`/vinyls/${vinylItem._id}`}>
                 <Card shadow="sm" padding="lg" radius="md" withBorder>
                   <Card.Section>
                     <img src={vinylItem.image} height={160} alt="Vinyl Cover" />
                   </Card.Section>
                   <Group justify="space-between" mt="md" mb="xs">
                     <Text fw={500} c="#252525">{vinylItem.artist} - {vinylItem.album}</Text>
-                    <Badge color="pink">{vinylItem.types}</Badge>
+                    <Badge color="#d0ad50">{vinylItem.types}</Badge>
                   </Group>
-                  <Button color="blue" fullWidth mt="md" radius="md">
+                  <Button color="#903749" fullWidth mt="md" radius="md">
                     View Vinyl Details
                   </Button>
                 </Card>

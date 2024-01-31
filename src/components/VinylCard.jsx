@@ -17,9 +17,9 @@ const VinylCard = ({ artist, album, image, types, onAddToCollection, vinyl }) =>
           <Text fw={500} c="#252525">
             {artist} - {album}
           </Text>
-          <Badge color="pink">{types}</Badge>
+          <Badge color="#d0ad50">{types}</Badge>
         </Group>
-        <Button color="blue" fullWidth mt="md" radius="md" onClick={onAddToCollection}>
+        <Button color="#903749" fullWidth mt="md" radius="md" onClick={onAddToCollection}>
           Add to Collection
         </Button>
       </Card>

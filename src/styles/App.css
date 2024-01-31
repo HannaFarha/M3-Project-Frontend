@@ -4,13 +4,13 @@
   --main-title-color: #b5455c;
   --text-color: #6b2936;
   --label-text-color: #e6d3a0;
-  --orange-light: #d0ad50
+  --orange-light: #d0ad50;
   --background-light: #fdf1f1;
   --border-white-grey: #dbdbdb;
 }
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto; 
   padding: 2rem;
   text-align: center;
  
