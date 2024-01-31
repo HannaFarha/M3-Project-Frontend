@@ -12,9 +12,9 @@ function CollectionPage() {
 
   const fetchCollections = async () => {
     try {
-      const tokenFromLocalStorage= localStorage.getItem("authToken")
+      const tokenFromLocalStorage = localStorage.getItem("authToken");
       const response = await fetch(`${import.meta.env.VITE_API_URL}/coll/collections/`, 
-      {headers: { Authorization: `Bearer ${tokenFromLocalStorage}`}}); 
+        {headers: { Authorization: `Bearer ${tokenFromLocalStorage}`}}); 
       if (response.ok) {
         const collectionData = await response.json();
         setCollections(collectionData);
@@ -32,9 +32,9 @@ function CollectionPage() {
   }, []);
 
   if (collections.length < 1 ) {
-    return  <p> no vinyls to showing</p>
+    return  <p> no vinyls to show</p>;
   }
-  console.log(collections)
+  console.log(collections);
 
   return (
     <>
@@ -48,24 +48,24 @@ function CollectionPage() {
       </div>
       <div className="CollectionsListPage">
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
-          {collections && (
-            collections.map((collection) => (
-                <Link key={collection._id} to={`/collection/${collection._id}`}>
-                  <Card shadow="sm" padding="lg" radius="md" withBorder>
-                    <Card.Section>
-                      <img src={collection.vinyl.image} height={160} alt="Vinyl Cover" />
-                    </Card.Section>
-                    <Group justify="space-between" mt="md" mb="xs">
-                      <Text fw={500} c="#252525">{collection.vinyl.artist} - {collection.vinyl.album}</Text>
-                      <Badge color="pink">{collection.vinyl.types}</Badge>
-                    </Group>
-                    <Button color="blue" fullWidth mt="md" radius="md">
-                      View Vinyl Details
-                    </Button>
-                  </Card>
-                </Link>
-              ))
-          ) }
+          {collections && collections.map((collection) => (
+            collection.vinyl.map((vinylItem) => (
+              <Link key={vinylItem._id} to={`/collection/${collection._id}`}>
+                <Card shadow="sm" padding="lg" radius="md" withBorder>
+                  <Card.Section>
+                    <img src={vinylItem.image} height={160} alt="Vinyl Cover" />
+                  </Card.Section>
+                  <Group justify="space-between" mt="md" mb="xs">
+                    <Text fw={500} c="#252525">{vinylItem.artist} - {vinylItem.album}</Text>
+                    <Badge color="pink">{vinylItem.types}</Badge>
+                  </Group>
+                  <Button color="blue" fullWidth mt="md" radius="md">
+                    View Vinyl Details
+                  </Button>
+                </Card>
+              </Link>
+            ))
+          ))}
         </SimpleGrid>
       </div>
     </>
@@ -73,4 +73,3 @@ function CollectionPage() {
 }
 
 export default CollectionPage;
-             // .filter((collection) => collection.vinyl.artist.toLowerCase().includes(search.toLowerCase()))
