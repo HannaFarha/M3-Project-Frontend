@@ -12,7 +12,7 @@ const UpdateVinyl = () => {
   const [year, setYear] = useState('')
   const [types, setTypes] = useState('');
   const [condition, setCondition] = useState('');
-
+  const [image, setImage] = useState('');
   useEffect(() => {
     const fetchOneVinyl = async () => {
       try {
@@ -25,6 +25,7 @@ const UpdateVinyl = () => {
           setYear(vinylData.year)
           setTypes(vinylData.types)
           setCondition(vinylData.condition)
+          setImage(vinylData.image)
         }
       } catch (error) {
         console.log('Something went wrong ', error)
