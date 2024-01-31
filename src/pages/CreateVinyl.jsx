@@ -18,7 +18,7 @@ const NewVinyl = () => {
   
     
   
-    const vinylToCreate = { artist, album, year, types: types, condition } 
+    const vinylToCreate = { artist, album, year, types: types, condition, image } 
   
     try {
       const response = await fetchWithToken('/vinyls', 'POST', vinylToCreate)
