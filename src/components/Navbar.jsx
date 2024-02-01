@@ -23,7 +23,7 @@ const Navbar = () => {
           {isAuthenticated ? (
             <>
               
-              <Link to='/' className={classes.link}>Search</Link>
+             
               <Link to='/collection' className={classes.link}>My Collection</Link>
               <Link to='/newVinyl' className={classes.link}>New Vinyl</Link>
             
