@@ -12,7 +12,7 @@ const UpdateVinyl = () => {
   const [year, setYear] = useState('')
   const [types, setTypes] = useState('');
   const [condition, setCondition] = useState('');
-
+  const [image, setImage] = useState('');
   useEffect(() => {
     const fetchOneVinyl = async () => {
       try {
@@ -25,6 +25,7 @@ const UpdateVinyl = () => {
           setYear(vinylData.year)
           setTypes(vinylData.types)
           setCondition(vinylData.condition)
+          setImage(vinylData.image)
         }
       } catch (error) {
         console.log('Something went wrong ', error)
@@ -90,6 +91,15 @@ const UpdateVinyl = () => {
           onChange={(value) => setCondition(value)} 
           data={['Mint', 'VeryGood', 'Fair']}
         />
+         <label >
+            <span>Image:</span>
+            <input
+              type="text"
+              value={image}
+              placeholder="Image URL..."
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </label>
       
         <button type='submit'>SUBMIT</button>
       </form>
