@@ -60,7 +60,7 @@ const VinylsDetailsPage = () => {
           Delete</button><n/>
           <Link to={`/vinyl/${vinyl._id}`}> <button className="modal-add-to-cart-btn">Update</button></Link>
           <br/> <br/>
-       <div> <Link to={`/`}> <button className="modal-add-to-cart-btn">go back</button></Link></div>
+       <div> <Link to={`/`}> <button className="modal-add-to-cart-btn">Back</button></Link></div>
       </div>
       
               </div> 
