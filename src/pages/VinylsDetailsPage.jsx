@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
-import "./details.css"
+import "../styles/details.css"
 const VinylsDetailsPage = () => {
  
   const [vinyl, setVinyl] = useState()
