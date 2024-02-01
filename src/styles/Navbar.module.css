@@ -24,14 +24,7 @@
   font-weight: 500;
   font-size: var(--mantine-font-size-sm);
 
-  /* Usage of mixin provided by postcss-preset-mantine */
-  @include smaller-than($mantine-breakpoint-sm) {
-    height: rem(42px);
-    width: 100%;
-  }
-
-  /* Usage of light-dark function instead of @mixin */
-  color: light-dark(red, blue); /* Value for dark color scheme */
+  
 }
 
 .logoutButton {
