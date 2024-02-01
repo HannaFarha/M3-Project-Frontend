@@ -29,7 +29,7 @@ const Navbar = () => {
               <Link to='/profile' className={classes.link}>My Profile</Link>
               <Link to='/' className={classes.link}>Vinyls</Link>
               <Link to="/" className={classes.link}>
-                <Button onClick={logout} variant="filled" color="blue" className={classes.button}>
+                <Button onClick={logout} variant="filled" color="#903749" className={classes.button}>
                   Log Out
                 </Button>
               </Link>
@@ -37,12 +37,12 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/signup" className={classes.link}>
-                <Button variant="outline" color="blue" className={classes.button}>
+                <Button variant="outline" color="#903749" className={classes.button}>
                   Sign Up
                 </Button>
               </Link>
               <Link to="/login" className={classes.link}>
-                <Button variant="filled" color="blue" className={classes.button}>
+                <Button variant="filled" color="#DBC078" className={classes.button}>
                   Sign In
                 </Button>
               </Link>

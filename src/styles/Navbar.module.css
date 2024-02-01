@@ -1,43 +1,50 @@
+/* Import the mixins from postcss-preset-mantine */
+@import 'postcss-preset-mantine';
+
 .header {
-    height: rem(60px);
-    padding-left: var(--mantine-spacing-md);
-    padding-right: var(--mantine-spacing-md);
-    border-bottom: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  height: rem(60px);
+  padding-right: var(--mantine-spacing-md);
+  border-bottom: 12px;
+}
+
+.linksContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  text-decoration: none;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-weight: 500;
+  font-size: var(--mantine-font-size-sm);
+
+  /* Usage of mixin provided by postcss-preset-mantine */
+  @include smaller-than($mantine-breakpoint-sm) {
+    height: rem(42px);
+    width: 100%;
   }
-  
-  .linksContainer {
-    display: flex;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .link {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding-left: var(--mantine-spacing-md);
-    padding-right: var(--mantine-spacing-md);
-    text-decoration: none;
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-    font-weight: 500;
-    font-size: var(--mantine-font-size-sm);
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-    }
-  }
-  
-  .logoutButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: inherit;
-    font: inherit;
-    padding: 0;
-    margin-left: var(--mantine-spacing-md);
-  }
-  .loginButton,
+
+  /* Usage of light-dark function instead of @mixin */
+  color: light-dark(red, blue); /* Value for dark color scheme */
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin-left: var(--mantine-spacing-md);
+}
+
+.loginButton,
 .signupButton {
   background: none;
   border: none;

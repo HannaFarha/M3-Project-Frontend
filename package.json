@@ -15,6 +15,8 @@
     "@mantinex/mantine-logo": "^1.0.1",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
@@ -31,6 +33,7 @@
     "postcss": "^8.4.33",
     "postcss-preset-mantine": "^1.12.3",
     "postcss-simple-vars": "^7.0.1",
+    "sass": "^1.70.0",
     "vite": "^5.0.8"
   }
 }
