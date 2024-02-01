@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { Select } from '@mantine/core';
+import classes from '../styles/CreateVinyl.module.css';
 
 const NewVinyl = () => {
   const { fetchWithToken, userId } = useContext(AuthContext)
@@ -37,12 +38,14 @@ const NewVinyl = () => {
     <>
       <h1>New Vinyl</h1>
       <form
+        className={classes.form}
         onSubmit={handleSubmit}
         action='submit'
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <label htmlFor='album'>Album:</label>
         <input
+         className={classes.inputo}
           type='text'
           id='album'
           value={album}
@@ -51,7 +54,8 @@ const NewVinyl = () => {
 
         <label htmlFor='artist'>Artist:</label>
         <input
-          type='text'
+         className={classes.inputo}
+         type='text'
           id='artist'
           value={artist}
           onChange={event => setArtist(event.target.value)}
@@ -59,35 +63,41 @@ const NewVinyl = () => {
 
         <label htmlFor='year'>Year:</label>
         <input
-          type='text'
+         className={classes.inputo}
+         type='text'
           id='year'
           value={year}
           onChange={event => setYear(event.target.value)}
         />
          <label htmlFor='types'>Types</label>
          <Select
-            value={types}
+         className={classes.inputo}
+         value={types}
             onChange={(value) => setTypes(value)} 
             data={['Jazz', 'Rock', 'Electronic', 'Hip-hop', 'Funk']}
           />
         <label htmlFor='condition'>Condition:</label>
         <Select
-          value={condition}
+         className={classes.inputo}
+         value={condition}
           onChange={(value) => setCondition(value)} 
           data={['Mint', 'VeryGood', 'Fair']}
         />
-        <label >
-            <span>Image:</span>
+        <label htmlFor='image'>Image:   </label>
+           
             <input
-              type="text"
+         className={classes.inputo}
+         type="text"
               value={image}
               placeholder="Image URL..."
               onChange={(e) => setImage(e.target.value)}
             />
-          </label>
+        
 
       
-        <button type='submit'>SUBMIT</button>
+        <button
+         className={classes.button}
+          type='submit'>SUBMIT</button>
       </form>
     </>
   )
