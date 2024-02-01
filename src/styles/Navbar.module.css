@@ -1,4 +1,4 @@
-
+@import 'postcss-preset-mantine';
 @import '../styles/App.css';
 
 
@@ -50,13 +50,8 @@
   margin-left: var(--mantine-spacing-md);
 }
 
-.loginButton,
-.signupButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-  font: inherit;
-  padding: 0;
-  margin-left: var(--mantine-spacing-md);
+.button
+{
+  margin-left: 20px;
+
 }

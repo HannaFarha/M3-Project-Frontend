@@ -11,7 +11,7 @@
 .form-title {
     font-size: 27px;
     margin-bottom: 15px;
-    color: teal;
+    color: var(--orange-light);
 }
 
 .form {
@@ -21,7 +21,7 @@
 }
 
 .form input {
-    border: 2px solid teal;
+    border: 2px solid var(--orange-light);
     padding: 10px;
     font-size: 21px;
     margin-bottom: 15px;
@@ -33,8 +33,8 @@
 
 .form-btn {
     width: 100%;
-    background-color: blue;
-    color: black;
+    background-color: var(--main-background);
+    color: var (--background-light);
     cursor: pointer;
     border-radius: 60px;
     padding: 7px;
