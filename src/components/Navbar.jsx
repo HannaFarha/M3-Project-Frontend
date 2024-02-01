@@ -29,19 +29,19 @@ const Navbar = () => {
             
               <Link to='/' className={classes.link}>Vinyls</Link>
               <Link to="/" className={classes.link}>
-                <Button onClick={logout} variant="filled" color="#903749" className={classes.button}>
+                <Button onClick={logout} variant="filled" color="#903749"  >
                   Log Out
                 </Button>
               </Link>
             </>
           ) : (
             <>
-              <Link to="/signup" className={classes.link}>
+              <Link to="/signup" >
                 <Button variant="outline" color="#903749" className={classes.button}>
                   Sign Up
                 </Button>
               </Link>
-              <Link to="/login" className={classes.link}>
+              <Link to="/login" >
                 <Button variant="filled" color="#DBC078" className={classes.button}>
                   Sign In
                 </Button>
