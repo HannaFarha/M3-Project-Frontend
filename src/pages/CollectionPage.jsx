@@ -18,7 +18,7 @@ function CollectionPage() {
       if (response.ok) {
         const collectionData = await response.json();
         setCollections(collectionData);
-        console.log("Collections:", collections);
+        
       } else {
         console.error('Failed to fetch collections:', response.status);
       }
@@ -34,18 +34,13 @@ function CollectionPage() {
   if (collections.length < 1 ) {
     return  <p> no vinyls to show</p>;
   }
-  console.log(collections);
+
 
   return (
     <>
-      <div className="authors-search-wrapper">
-      <Input size="md" radius="xl" 
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          type="search"
-          placeholder="Search in Vinyls"
-        />
-      </div>
+      <br></br>
+      <br></br>
+      <br></br>
       <div className="CollectionsListPage">
         <SimpleGrid cols={width > 1200 ? 3 : width > 800 ? 2 : 1}>
           {collections && collections.map((collection) => (

@@ -55,11 +55,11 @@ const VinylsDetailsPage = () => {
               <div className="modal-content-info-price"><b>{vinyl.types}</b></div>   <br/> 
               <div className="modal-content-info-price"><b>{vinyl.condition}</b></div>   <br/> 
               <div className="modal-content-info-price"><b>{vinyl.timestamps}</b></div>   <br/> 
-              
+              {userId === vinyl.createdBy && (<>
         <button onClick={handleDelete}  className="modal-add-to-cart-btn">
-          Delete</button><n/>
+          Delete</button>
           <Link to={`/vinyl/${vinyl._id}`}> <button className="modal-add-to-cart-btn">Update</button></Link>
-          <br/> <br/>
+          <br/> <br/></>)}
        <div> <Link to={`/`}> <button className="modal-add-to-cart-btn">Back</button></Link></div>
       </div>
       
