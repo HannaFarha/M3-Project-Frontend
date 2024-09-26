@@ -1,0 +1,56 @@
+@import '../styles/App.css';
+
+
+.header {
+  height: rem(60px);
+  padding-right: var(--mantine-spacing-md);
+  border-bottom: 12px;
+}
+
+.linksContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  text-decoration: none;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-weight: 600;
+  font-size: var(--mantine-font-size-md);
+}
+.link:hover {
+  background-color: var(--main-red);
+  border-radius: 10px;
+  transition: 0.6s ease; 
+  color: var(--background-light);
+
+}
+.link:active {
+  background-color: var(--main-red);
+  border-radius: 10px;
+  transition: 0.6s ease; 
+  color: var(--background-light);
+
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  margin-left: var(--mantine-spacing-md);
+}
+
+.button
+{
+  margin-left: 20px;
+
+}

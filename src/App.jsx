@@ -6,17 +6,20 @@ import Navbar from './components/Navbar'
 import NewVinyl from './pages/CreateVinyl.jsx';
 import VinylsPage from './pages/VinylsPage';
 import VinylsDetailsPage from './pages/VinylsDetailsPage';
-import { Route, Routes } from 'react-router-dom'
+import {Link, Route, Routes } from 'react-router-dom'
 import '@mantine/core/styles.css';
 import UpdateVinyl from './pages/UpdateVinyl.jsx';
+import CollectionPage from'./pages/CollectionPage.jsx';
 
 function App() {
   return (
     <>
       <Navbar />
+
      
       <Routes>
         <Route path="/" element={<VinylsPage />} />
+        <Route path="/collection" element={<CollectionPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/newvinyl" element={<NewVinyl />} />
