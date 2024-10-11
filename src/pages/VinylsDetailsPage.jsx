@@ -12,7 +12,7 @@ const VinylsDetailsPage = () => {
   useEffect(() => {
     const fetchVinyl = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls/${vinylsId}`)
+        const response = await fetch(`https://m3-project-backend.onrender.com/api/vinyls/${vinylsId}`)
         if (response.ok) {
           const vinylData = await response.json()
           setVinyl(vinylData)
@@ -31,7 +31,7 @@ const VinylsDetailsPage = () => {
   }, [vinylsId])
   const handleDelete = async () => {
     try {
-      const response = await fetch(`/vinyl/${vinylsId}`, 'DELETE')
+      const response = await fetchWithToken(`/vinyl/${vinylsId}`, 'DELETE')
       
       if (response.status === 204) {
         navigate('/')
