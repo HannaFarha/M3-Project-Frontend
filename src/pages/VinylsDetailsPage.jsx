@@ -12,7 +12,7 @@ const VinylsDetailsPage = () => {
   useEffect(() => {
     const fetchVinyl = async () => {
       try {
-        const response = await fetch(`https://m3-project-backend.onrender.com/api/vinyls/${vinylsId}`)
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls/${vinylsId}`)
         if (response.ok) {
           const vinylData = await response.json()
           setVinyl(vinylData)
