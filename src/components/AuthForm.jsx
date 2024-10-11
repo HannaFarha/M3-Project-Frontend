@@ -69,8 +69,10 @@ const AuthForm = ({ isLogin = false }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         type="password"
-        placeholder="Password"
-      />
+        placeholder="Password" />
+        <i className="bi bi-eye-slach-fill"> </i>
+        <i className="bi bi-eye-slach"> </i>
+     
       <button className="form-btn" type="submit">
       {isLogin ? 'Login' : 'Signup'}
       </button>
