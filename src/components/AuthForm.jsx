@@ -45,7 +45,7 @@ const AuthForm = ({ isLogin = false }) => {
       if (response.status === 200) {
         // The user was logged in successully
         const parsed = await response.json()
-        console.log(parsed)
+        
         saveToken(parsed.token)
         navigate('/')
       }

@@ -14,11 +14,11 @@ function VinylsPage() {
   
   const fetchVinyls = async () => {
     try {
-      const response = await fetch(`https://m3-project-backend.onrender.com/api/vinyls`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/vinyls`);
       if (response.ok) {
         const vinylData = await response.json();
         setVinyls(vinylData);
-        console.log(vinylData)
+        console.log(import.meta.env.VITE_API_URL)
       }
     } catch (error) {
       console.log(error);
